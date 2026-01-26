@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">doc-dois</string><!-- Aqui é para trocar a nome do app dependento do build varianete-->
+</resources>
