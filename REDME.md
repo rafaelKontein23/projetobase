@@ -211,6 +211,8 @@ seu_projeto/
 
 ---
 
+o modulo common é usado como util
+
 ### **5. Configure o Gradle**
 
 No arquivo de configuração de módulos (`settings.gradle` ou `settings.gradle.kts`) na raiz do seu projeto, adicione:
@@ -289,5 +291,6 @@ Este projeto foi criado para servir como **template profissional**, facilitando:
 * Manutenção
 * Escalabilidade
 * Padronização entre projetos
+* 
 
 > Sempre que iniciar um novo projeto, a recomendação é duplicar este template e adaptar apenas regras de negócio e UI.
