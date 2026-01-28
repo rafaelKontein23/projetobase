@@ -4,4 +4,5 @@ plugins {
 //    #para configurar o hilt no seu projeto
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.dagger.hilt) apply false
+    alias(libs.plugins.android.library) apply false
 }

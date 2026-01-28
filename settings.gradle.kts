@@ -21,4 +21,9 @@ dependencyResolutionManagement {
 
 rootProject.name = "docdefaut"
 include(":app")
- 
+include(":test")
+include(":modules:authentication")
+include(":modules:test")
+project(":modules:authentication").projectDir = file("modules/authentication")
+project(":modules:test").projectDir = file("modules/test")
+include("modules:common")

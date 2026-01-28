@@ -55,3 +55,4 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 #para configurar o hilt no seu projeto
 dagger-hilt =  {id ="com.google.dagger.hilt.android", version.ref = "dagger-hilt"}
 ksp=  {id ="com.google.devtools.ksp", version.ref = "ksp"}
+android-library = { id = "com.android.library", version.ref = "agp" }

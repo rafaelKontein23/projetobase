@@ -1,6 +1,8 @@
 package com.example.docdefaut.presentation.login.view
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +12,7 @@ import com.example.docdefaut.BuildConfig
 import com.example.docdefaut.R
 import com.example.docdefaut.databinding.ActivityMainBinding
 import com.example.docdefaut.presentation.login.viewModel.viewModel
+import com.example.test.Test
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -24,7 +27,9 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater) // configuração do binding
         setContentView(binding.root)// configuração do binding
-
+        viewModel.onEvent(
+            LoginEvent.LoginTest("teste")
+        )
         // aqui é para fazer um codigo especifico para cada build variante
         if (
            BuildConfig.FLAVOR == "versionTestTwo"
@@ -32,6 +37,16 @@ class MainActivity : AppCompatActivity() {
             binding.main.setBackgroundColor(getColor(R.color.white))
         }else{
             binding.main.setBackgroundColor(getColor(R.color.black))
+        }
+
+        viewModel.effect.observe(this) { event ->
+            event?.getContentIfNotHandled()?.let { effect ->
+                when (effect) {
+                    is LoginEffect.ShowLoading -> {
+                        Toast.makeText(this, "dsnajasnk", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->

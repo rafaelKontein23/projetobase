@@ -32,7 +32,7 @@ class RetrofitManeger {
     ): Retrofit {
         return Retrofit
             .Builder()
-            .baseUrl("UrlAPI")
+            .baseUrl("https://jsonplaceholder.typicode.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()

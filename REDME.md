@@ -156,6 +156,103 @@ API → Repository → UseCase → ViewModel → LiveData → UI
 
 ---
 
+# Organização de Projeto Android Multimódulo
+
+Este guia ensina como criar e utilizar módulos customizados dentro de uma pasta `modules` em projetos Android, uma estrutura moderna e recomendada para projetos escaláveis.
+
+---
+
+## Passo a Passo para Adicionar Módulos no Android
+
+### **1. Crie o Projeto Base**
+
+Crie normalmente seu projeto Android no Android Studio.
+
+---
+
+### **2. Crie a Pasta de Módulos**
+
+Na raiz do projeto (mesmo nível do `app`), adicione uma pasta chamada `modules`:
+
+```
+seu_projeto/
+├── app/
+├── modules/
+│
+```
+
+---
+
+### **3. Crie um Novo Módulo**
+
+No Android Studio:
+
+- Vá em: `File > New > New Module`
+- Selecione: **Android Library**
+- Escolha um nome simples para o módulo (ex: `authentication`)
+- Finalize a criação; o módulo será criado na raiz do projeto.
+
+---
+
+### **4. Mova o Novo Módulo para a Pasta `modules`**
+
+No seu sistema operacional (Windows Explorer, Finder, etc):
+
+- Feche o Android Studio (opcional, mas recomendado).
+- Mova a pasta do novo módulo para `modules/`.
+
+Exemplo:
+```
+seu_projeto/
+├── app/
+├── modules/
+│   └── authentication/
+```
+
+---
+
+### **5. Configure o Gradle**
+
+No arquivo de configuração de módulos (`settings.gradle` ou `settings.gradle.kts`) na raiz do seu projeto, adicione:
+
+```groovy
+include(":modules:authentication")
+project(":modules:authentication").projectDir = file("modules/authentication")
+```
+
+Repita essas linhas para cada módulo criado, ajustando o nome e caminho.
+
+---
+
+### **6. Adicione o Módulo como Dependência**
+
+No arquivo `build.gradle` do app:
+
+```groovy
+dependencies {
+    implementation project(":modules:authentication")
+    // Outros módulos:
+    implementation project(":modules:test")
+}
+```
+
+---
+
+### **7. Sincronize o Projeto**
+
+Clique em **File > Sync Project with Gradle Files** no Android Studio ou use o botão "Sync Now" no topo da IDE.
+
+---
+
+## Dicas
+
+- Sempre use nomes simples para os módulos, sem espaços ou acentuação.
+- Para criar novos módulos, repita a partir do Passo 3.
+- Se necessário, verifique se os pacotes e Manifests dos módulos estão corretos.
+
+---
+
+Pronto! Agora você pode organizar seu projeto Android em múltiplos módulos de forma profissional, usando a pasta `modules` para facilitar a escalabilidade e colaboração.
 ## 🔥 Firebase (planejado)
 
 Integração futura para:
